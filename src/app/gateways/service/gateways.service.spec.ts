@@ -39,4 +39,13 @@ fdescribe('GatewaysService', () => {
 
   })
 
+  it('should show alert contain validation error when validation result input', () => {
+    let res= {validation_message:"IPv4 is not valid, please, enter it in the valid form" }
+    service.handleBackendResponse(res);
+
+    spyOn(window, "alert");
+    expect(window.alert).toContain("validation_message: IPv4 is not valid, please, enter it in the valid form");
+
+  })
+
 });

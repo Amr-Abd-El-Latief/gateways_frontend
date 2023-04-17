@@ -6,8 +6,6 @@ import { Observable, of } from 'rxjs';
 import { Gateways_App_Base_URL } from 'src/app/app-interfaces/Constants';
 
 
-
-
 @Injectable({
   providedIn: 'root'
 })

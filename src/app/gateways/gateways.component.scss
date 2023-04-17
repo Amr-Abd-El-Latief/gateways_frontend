@@ -1,8 +1,8 @@
 table {
   width: 100%;
+  th.mat-header-cell{
 
+    text-align: center;
+  }
 }
-::ng-deep  .mat-header-cell {
-  flex-direction: column;
-  justify-content: center;
-}
+
