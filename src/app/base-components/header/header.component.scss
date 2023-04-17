@@ -1,0 +1,14 @@
+/* Style the header */
+@import "../../../assets/theme/light-theme/light-theme.scss";
+
+header {
+    background-color: $header-black;
+    padding: 30px;
+    text-align: center;
+    font-size: 35px;
+    color: $primary-green;
+    h2 {
+      margin-top: 10px;
+      margin-bottom: 0px;
+      }
+  }

@@ -1,0 +1,22 @@
+<div class="form-container">
+    <div class="close-container">
+        <a role="button" class="close_button" [mat-dialog-close]>
+            <h1>X</h1>
+        </a>
+
+    </div>
+    <mat-form-field>
+        <input matInput placeholder="Name" [(ngModel)]="gateway.gateway_name">
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+        <input matInput placeholder="IP" [(ngModel)]="gateway.IPv4">
+    </mat-form-field>
+    <br />
+
+    <strong>Note: To add devices you must create gateway first, then add devices from Devices page </strong>
+    <br />
+    <br />
+    <button (click)="saveGateway()">Save</button>
+
+</div>

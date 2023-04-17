@@ -1,0 +1,31 @@
+<div class="form-container">
+<div class="close-container">
+  <a  role="button" class="close_button" [mat-dialog-close]>
+    <h1>X</h1>
+  </a>
+
+  </div>
+    <mat-form-field>
+      <input matInput placeholder="Vendor" [(ngModel)]="device.device_vendor" >
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="device.created_at">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-select placeholder="Status" [(ngModel)]="device.status">
+        <mat-option value="true">Active</mat-option>
+        <mat-option value="false">not Active</mat-option>
+
+      </mat-select>
+    </mat-form-field>
+
+    <button (click)="saveDevice()">Save</button>
+
+  </div>
+  
