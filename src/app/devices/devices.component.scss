@@ -7,11 +7,17 @@ table {
     tr.mat-row:hover {
       background-color: rgb(235, 235, 235);
      }
-    
-    .light-font{
-      color: darkgray;
-    }
+  
 
+  }
+
+  .grid-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .light-font{
+    color: darkgray;
   }
 
   

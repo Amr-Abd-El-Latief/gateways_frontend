@@ -3,10 +3,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { GatewaysComponent } from './gateways.component';
 import { AllGateways } from '../app-interfaces/TestData';
 import { By } from '@angular/platform-browser';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { RouterTestingModule } from "@angular/router/testing";
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
 
 
 fdescribe('GatewaysComponent', () => {
@@ -18,11 +19,12 @@ fdescribe('GatewaysComponent', () => {
       imports: [
         HttpClientTestingModule,
         RouterTestingModule,
-        MatDialogModule
+        MatDialogModule,
+        MatTableModule
       ],
-      declarations: [ GatewaysComponent ]
+      declarations: [GatewaysComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -37,37 +39,39 @@ fdescribe('GatewaysComponent', () => {
 
   it('it should have table', () => {
     component.allGateways = AllGateways;
-    component.displayedColumns = ['gateway_id', 'gateway_name', 'IPv4','details'];
-    component.dataSource =  new MatTableDataSource([...AllGateways]);
+    component.displayedColumns = ['gateway_id', 'gateway_name', 'IPv4', 'details'];
+    component.dataSource = new MatTableDataSource([...AllGateways]);
 
     fixture.detectChanges();
     const rows = fixture.debugElement.queryAll(By.css('table'));
     expect(rows.length).toBe(1);
   });
 
-  it('should have a title',()=>{
+  it('should have a title', () => {
     const titleMessage = fixture.debugElement.query(By.css('h1')).nativeElement;
     expect(titleMessage.innerHTML).toBe('Gateways');
   })
 
-  it('should have add Device buton',()=>{
+  it('should have add Device buton', () => {
     const refreshBtnElement = fixture.debugElement.nativeElement.querySelector('#refresh_button');
     expect(refreshBtnElement.innerHTML).toBe('Refresh');
   })
 
-  // it('should show the 3 rows in the gateways table (test data length = 3)', () => {
-  //   component.allGateways = AllGateways;
-  //   component.displayedColumns = ['gateway_id', 'gateway_name', 'IPv4','details'];
-  //   component.dataSource =  new MatTableDataSource([...AllGateways]);
-  //   component.dataSource.data = AllGateways;
-  //   fixture.detectChanges();
-  //   fixture.whenStable().then(() => {
-  //     fixture.detectChanges();
-  //   let tableRows = fixture.nativeElement.querySelectorAll('tr');
-  //   expect(tableRows.length).toBe(3);
-  //   })
+  fit('should show the 3 rows in the gateways table (test data length = 3 plus header)', () => {
+    component.allGateways = AllGateways;
+    component.displayedColumns = ['gateway_id', 'gateway_name', 'IPv4', 'details'];
+    component.dataSource = new MatTableDataSource([...AllGateways]);
+    component.dataSource.data = AllGateways;
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      fixture.detectChanges();
+      let tableRows = fixture.nativeElement.querySelectorAll('tr');
+      expect(tableRows.length).toBe(4);
+    })
 
-  // });
+  });
+
+
 
   fit('should show  4 columns', () => {
     component.allGateways = AllGateways;
@@ -77,8 +81,8 @@ fdescribe('GatewaysComponent', () => {
     fixture.detectChanges();
     fixture.whenStable().then(() => {
       fixture.detectChanges();
-  
-    let tableColumns = fixture.nativeElement.querySelectorAll('td');
+
+    let tableColumns = fixture.nativeElement.querySelectorAll('th');
     expect(tableColumns.length).toBe(4);
     })
   });

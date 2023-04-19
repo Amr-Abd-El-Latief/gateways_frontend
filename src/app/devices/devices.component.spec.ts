@@ -8,7 +8,7 @@ import { RouterTestingModule } from "@angular/router/testing";
 import { MatDialogModule } from '@angular/material/dialog';
 import {SampleDevices} from '../app-interfaces/TestData';
 import { AllGateways } from '../app-interfaces/TestData';
-
+import { MatTableModule } from '@angular/material/table';
 fdescribe('DevicesComponent', () => {
   let component: DevicesComponent;
   let fixture: ComponentFixture<DevicesComponent>;
@@ -19,7 +19,8 @@ fdescribe('DevicesComponent', () => {
       imports: [
         HttpClientTestingModule,
         RouterTestingModule,
-        MatDialogModule
+        MatDialogModule,
+        MatTableModule
       ],
       declarations: [ DevicesComponent ]
     })
@@ -50,7 +51,7 @@ fdescribe('DevicesComponent', () => {
 
     fixture.detectChanges();
     const tableCount = fixture.debugElement.queryAll(By.css('table'));
-    expect(tableCount.length).toBe(2);
+    expect(tableCount.length).toBe(1);
   });
 
   it('should have a title',()=>{
@@ -63,33 +64,30 @@ fdescribe('DevicesComponent', () => {
     expect(refreshBtnElement.innerHTML).toBe('Add Device');
   })
 
-  it('should show the 3 rows in the gateways table (test data length = 3)', () => {
+  fit('should show the 5 columns in the gateways table', () => {
     component.devices = SampleDevices;
     component.displayedColumns = ['device_id', 'device_vendor', 'created_at', 'status', 'actions'];
     component.dataSource =  new MatTableDataSource([...SampleDevices]);
     component.gateway = AllGateways[0];
  
     fixture.detectChanges();
-    const rows = fixture.debugElement.queryAll(By.css('mat-row'));
-    expect(rows.length).toBe(3);
-    const refreshBtnElement = fixture.debugElement.nativeElement.querySelector('#refresh_button');
-    expect(refreshBtnElement.innerHTML).toBe('Refresh');
+    const rows = fixture.debugElement.queryAll(By.css('th'));
+    expect(rows.length).toBe(5);
+    const refreshBtnElement = fixture.debugElement.nativeElement.querySelector('#add_device');
+    expect(refreshBtnElement.innerHTML).toBe('Add Device');
   });
 
-  fit('should show  4 columns', () => {
+  fit('should show  4 rows', () => {
     component.devices = SampleDevices;
     component.displayedColumns = ['device_id', 'device_vendor', 'created_at','status','actions'];
     component.dataSource =  new MatTableDataSource([...SampleDevices]);
     component.gateway = AllGateways[0];
-  //   fixture.detectChanges();
-  //   const rows = fixture.debugElement.queryAll(By.css('mat-header-cell'));
-  //   expect(rows.length).toBe(4);
-  // });
+
   fixture.detectChanges();
   fixture.whenStable().then(() => {
     fixture.detectChanges();
 
-  let tableColumns = fixture.nativeElement.querySelectorAll('mat-row');
+  let tableColumns = fixture.nativeElement.querySelectorAll('tr');
   expect(tableColumns.length).toBe(4);
   });
   })

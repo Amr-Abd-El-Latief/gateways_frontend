@@ -41,24 +41,24 @@ export class GatewaysService {
     return this.http.delete(`${Gateways_App_Base_URL}/deletegateway/${gatewayId}`)
   }
 
-      /**
-     * function to handle result from backend 
-     */
+  /**
+ * function to handle result from backend 
+ */
 
-      handleBackendResponse(res:any){
-        if(res['validation_message']){
-  
-         alert(`Input is incorrect, operation didnt performe on database:  validation_message: ${res['validation_message']}`) 
-  
-        }else if(res.status && res.status !=200){
-          //error 
-          alert(`Error in request, operation didnt performe on database:  Error Details: ${JSON.stringify(res)}`) 
-  
-  
-        }else{
-          alert(`Success, operation success in database`) 
-  
-        }
-  
-      }
+  handleBackendResponse(res: any) {
+    if (res['validation_message']) {
+
+      alert(`Input is incorrect, operation didnt performe on database:  validation_message: ${res['validation_message']}`)
+
+    } else if (res.status && res.status != 200) {
+      //error 
+      alert(`Error in request, operation didnt performe on database:  Error Details: ${JSON.stringify(res)}`)
+
+
+    } else {
+      alert(`Success, operation success in database`)
+
+    }
+
+  }
 }
