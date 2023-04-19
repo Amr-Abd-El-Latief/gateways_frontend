@@ -69,19 +69,19 @@ fdescribe('GatewaysComponent', () => {
 
   // });
 
-  // it('should show  4 columns', () => {
-  //   component.allGateways = AllGateways;
-  //   component.displayedColumns = ['gateway_id', 'gateway_name', 'IPv4','details'];
-  //   component.dataSource =  new MatTableDataSource([...AllGateways]);
+  fit('should show  4 columns', () => {
+    component.allGateways = AllGateways;
+    component.displayedColumns = ['gateway_id', 'gateway_name', 'IPv4','details'];
+    component.dataSource =  new MatTableDataSource([...AllGateways]);
 
-  //   fixture.detectChanges();
-  //   fixture.whenStable().then(() => {
-  //     fixture.detectChanges();
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      fixture.detectChanges();
   
-  //   let tableColumns = fixture.nativeElement.querySelectorAll('th');
-  //   expect(tableColumns.length).toBe(4);
-  //   })
-  //});
+    let tableColumns = fixture.nativeElement.querySelectorAll('td');
+    expect(tableColumns.length).toBe(4);
+    })
+  });
 
 
 });

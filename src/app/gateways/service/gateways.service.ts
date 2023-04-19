@@ -52,7 +52,7 @@ export class GatewaysService {
   
         }else if(res.status && res.status !=200){
           //error 
-          alert(`Error in request, operation didnt performe on database:  Error Details: ${res}`) 
+          alert(`Error in request, operation didnt performe on database:  Error Details: ${JSON.stringify(res)}`) 
   
   
         }else{
