@@ -36,12 +36,41 @@ with its stored devices.
    -     How To run unit test: 
         
             1 - Reach by terminal to  the backend  main folder  besides the package.json file.
-            2 – in terminal run command:  npm run start   
- 
-             And for Code Covergae: 
-          
-            3 - ng test --code-coverage
+            2 - go inside the test folder 
+            2 – in terminal run command: npm test -- <test-file-name>
+             
+
+             example : npm test -- ip-validator-test.test.js
+
               
 
+## how to run Database filling script
 
 
+1 - install mongodb 
+2- create database with the name: gatewaysdb    with initial  collection:  gateway
+
+3 - run the API :GET :   http://localhost:3000/api/gates/createtestgateways
+
+
+
+# technical Notes:
+
+## library and tools used in this app 
+
+Front End: 
+
+ 1 - angular 
+ 2 - angular material 
+ 3- Jasmin (in testing )
+
+ Back End: 
+
+ 1 - Nodejs
+ 2- Mongoose  
+ 2 - jest (in testing )
+
+
+Database: 
+
+1 - mongodb 

@@ -13,7 +13,7 @@ export interface Gateway{
 export interface Device{
     device_id:number,
     device_vendor:string,
-    created_at:Date,
+    created_date:Date,
     status:boolean
   }
 

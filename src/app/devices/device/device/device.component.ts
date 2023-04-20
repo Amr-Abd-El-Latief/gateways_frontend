@@ -11,9 +11,9 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class DeviceComponent implements OnInit {
   currentGateway: Gateway;
   device: Device = {
-    "device_id": 5,
-    "device_vendor": "device_5",
-    "created_at": new Date("2/2/2023"),
+    "device_id": 1,
+    "device_vendor": "new device",
+    "created_date": new Date("2/2/2023"),
     "status": true
   };
   constructor(private devicesService: DevicesService, @Inject(MAT_DIALOG_DATA) public data: any) {

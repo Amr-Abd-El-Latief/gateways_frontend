@@ -46,7 +46,7 @@ fdescribe('DevicesComponent', () => {
       IPv4:"",
     };
     component.devices = SampleDevices;
-    component.displayedColumns = ['device_id', 'device_vendor', 'created_at','status','actions'];
+    component.displayedColumns = ['device_id', 'device_vendor', 'created_date','status','actions'];
     component.dataSource =  new MatTableDataSource([...SampleDevices]);
 
     fixture.detectChanges();
@@ -66,7 +66,7 @@ fdescribe('DevicesComponent', () => {
 
   fit('should show the 5 columns in the gateways table', () => {
     component.devices = SampleDevices;
-    component.displayedColumns = ['device_id', 'device_vendor', 'created_at', 'status', 'actions'];
+    component.displayedColumns = ['device_id', 'device_vendor', 'created_date', 'status', 'actions'];
     component.dataSource =  new MatTableDataSource([...SampleDevices]);
     component.gateway = AllGateways[0];
  
@@ -79,7 +79,7 @@ fdescribe('DevicesComponent', () => {
 
   fit('should show  4 rows', () => {
     component.devices = SampleDevices;
-    component.displayedColumns = ['device_id', 'device_vendor', 'created_at','status','actions'];
+    component.displayedColumns = ['device_id', 'device_vendor', 'created_date','status','actions'];
     component.dataSource =  new MatTableDataSource([...SampleDevices]);
     component.gateway = AllGateways[0];
 

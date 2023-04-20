@@ -19,7 +19,7 @@ export class DevicesComponent implements OnInit {
     IPv4: "",
   };
   devices: Device[] = [];
-  displayedColumns = ['device_id', 'device_vendor', 'created_at', 'status', 'actions'];
+  displayedColumns = ['device_id', 'device_vendor', 'created_date', 'status', 'actions'];
   dataSource = new MatTableDataSource<Device>();
   private gatewayId: string = "";
 
