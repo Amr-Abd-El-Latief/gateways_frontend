@@ -68,7 +68,6 @@ export class GatewaysComponent implements OnInit {
  * function to show add gate way dialogue
  */
   addGateway(){
-  //  this.dialog.open(DeviceComponent);
   let self = this;
   const dialogref = this.dialog.open(GatewayComponent, {
 

@@ -2,11 +2,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DevicesComponent } from './devices.component';
 import { By } from '@angular/platform-browser';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { RouterTestingModule } from "@angular/router/testing";
 import { MatDialogModule } from '@angular/material/dialog';
-import {SampleDevices} from '../app-interfaces/TestData';
+import { SampleDevices } from '../app-interfaces/TestData';
 import { AllGateways } from '../app-interfaces/TestData';
 import { MatTableModule } from '@angular/material/table';
 fdescribe('DevicesComponent', () => {
@@ -22,9 +22,9 @@ fdescribe('DevicesComponent', () => {
         MatDialogModule,
         MatTableModule
       ],
-      declarations: [ DevicesComponent ]
+      declarations: [DevicesComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -43,23 +43,23 @@ fdescribe('DevicesComponent', () => {
     component.gateway = {
       gateway_id: "",
       gateway_name: "no gateway exists",
-      IPv4:"",
+      IPv4: "",
     };
     component.devices = SampleDevices;
-    component.displayedColumns = ['device_id', 'device_vendor', 'created_date','status','actions'];
-    component.dataSource =  new MatTableDataSource([...SampleDevices]);
+    component.displayedColumns = ['device_id', 'device_vendor', 'created_date', 'status', 'actions'];
+    component.dataSource = new MatTableDataSource([...SampleDevices]);
 
     fixture.detectChanges();
     const tableCount = fixture.debugElement.queryAll(By.css('table'));
     expect(tableCount.length).toBe(1);
   });
 
-  it('should have a title',()=>{
+  it('should have a title', () => {
     const titleMessage = fixture.debugElement.query(By.css('h1')).nativeElement;
     expect(titleMessage.innerHTML).toBe("Gateway's Devices");
   })
 
-  it('should have add Device buton',()=>{
+  it('should have add Device buton', () => {
     const refreshBtnElement = fixture.debugElement.nativeElement.querySelector('#add_device');
     expect(refreshBtnElement.innerHTML).toBe('Add Device');
   })
@@ -67,9 +67,9 @@ fdescribe('DevicesComponent', () => {
   fit('should show the 5 columns in the gateways table', () => {
     component.devices = SampleDevices;
     component.displayedColumns = ['device_id', 'device_vendor', 'created_date', 'status', 'actions'];
-    component.dataSource =  new MatTableDataSource([...SampleDevices]);
+    component.dataSource = new MatTableDataSource([...SampleDevices]);
     component.gateway = AllGateways[0];
- 
+
     fixture.detectChanges();
     const rows = fixture.debugElement.queryAll(By.css('th'));
     expect(rows.length).toBe(5);
@@ -79,17 +79,17 @@ fdescribe('DevicesComponent', () => {
 
   fit('should show  4 rows', () => {
     component.devices = SampleDevices;
-    component.displayedColumns = ['device_id', 'device_vendor', 'created_date','status','actions'];
-    component.dataSource =  new MatTableDataSource([...SampleDevices]);
+    component.displayedColumns = ['device_id', 'device_vendor', 'created_date', 'status', 'actions'];
+    component.dataSource = new MatTableDataSource([...SampleDevices]);
     component.gateway = AllGateways[0];
 
-  fixture.detectChanges();
-  fixture.whenStable().then(() => {
     fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      fixture.detectChanges();
 
-  let tableColumns = fixture.nativeElement.querySelectorAll('tr');
-  expect(tableColumns.length).toBe(4);
-  });
+      let tableColumns = fixture.nativeElement.querySelectorAll('tr');
+      expect(tableColumns.length).toBe(4);
+    });
   })
 
 });

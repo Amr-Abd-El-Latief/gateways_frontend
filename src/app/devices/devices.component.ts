@@ -67,10 +67,6 @@ export class DevicesComponent implements OnInit {
 
     dialogref.afterClosed().subscribe(response => {
       self.getgatewayDevices(self.gatewayId);
-      // console.log(response);
-      // if (response) {
-       
-      // }
     });
   }
 

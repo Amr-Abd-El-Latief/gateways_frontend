@@ -4,15 +4,20 @@ import { GatewaysComponent } from './gateways.component';
 import { AllGateways } from '../app-interfaces/TestData';
 import { By } from '@angular/platform-browser';
 import { MatTableDataSource } from '@angular/material/table';
-import { HttpClientTestingModule } from '@angular/common/http/testing'
+import { HttpClientTestingModule,HttpTestingController } from '@angular/common/http/testing'
 import { RouterTestingModule } from "@angular/router/testing";
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
-
-
+import { GatewaysService } from './service/gateways.service';
+import { Gateways_App_Base_URL } from '../app-interfaces/Constants';
+import { Router } from '@angular/router';
 fdescribe('GatewaysComponent', () => {
   let component: GatewaysComponent;
   let fixture: ComponentFixture<GatewaysComponent>;
+  let httpMock: HttpTestingController;
+  let service: GatewaysService;
+  let location: Location;
+  let router: Router;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -25,6 +30,9 @@ fdescribe('GatewaysComponent', () => {
       declarations: [GatewaysComponent]
     })
       .compileComponents();
+      service = TestBed.inject(GatewaysService);
+      httpMock = TestBed.inject(HttpTestingController);
+      router = TestBed.inject(Router);
   });
 
   beforeEach(() => {
@@ -88,4 +96,21 @@ fdescribe('GatewaysComponent', () => {
   });
 
 
+  fit('should call /deletegateway/ API when function deleteGateway function is called is called ', () => {
+    component.deleteGateway("test_id")
+    const req = httpMock.expectOne(Gateways_App_Base_URL + '/deletegateway/test_id');
+    expect(req.request.method).toBe('DELETE');
+  });
+
+
+  fit('should navigate to devices when openDevice is called',async  () =>  {
+    component.allGateways = AllGateways;
+    const navigateSpy = spyOn(router, 'navigate');
+    component.openDevice("test_gateway_id");
+    const firstArg = navigateSpy.calls.mostRecent().args[0];
+    expect(firstArg[0]).toContain('devices/test_gateway_id');
+  });
+
+
 });
+
